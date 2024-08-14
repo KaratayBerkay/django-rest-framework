@@ -1,0 +1,11 @@
+django
+djangorestframework
+django-cors-headers
+django-debug-toolbar
+pyyaml
+requests
+pydantic-settings
+pydantic
+uwsgi
+psycopg2-binary
+Faker

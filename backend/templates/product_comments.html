@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<ul>
+    {% for product in products %}
+        <h1>{{ product.title }}</h1>
+        <h3>Comments</h3>
+        {% for comment in product.comments.all %}
+            <li>{{ comment.comment }}</li>
+        {% endfor %}
+    {% endfor %}
+</ul>
+{% endblock %}

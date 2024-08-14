@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  postgres_django:
+    image: 'bitnami/postgresql:latest'
+    container_name: postgres_django
+    networks:
+      - application
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres_user
+      - POSTGRES_PASSWORD=mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/bitnami/postgresql
+
+  django-app:
+    container_name: django-app
+    build: ./backend
+    ports:
+      - "8001:8001"
+#    volumes:
+#      - products_migrations:/app/products/migrations
+#      - api_migrations:/app/api/migrations
+    entrypoint: /app/docker-entrypoint.sh
+    networks:
+      - application
+
+volumes:
+#  products_migrations:
+#  api_migrations:
+  postgres_data:
+networks:
+  application:
